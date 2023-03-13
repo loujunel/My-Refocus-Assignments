@@ -1,0 +1,16 @@
+{
+  "name": "automated-testing",
+  "version": "0.0.1",
+  "main": "bmi_calculator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.4.3"
+  },
+  "devDependencies": {},
+  "description": ""
+}
