@@ -1,0 +1,322 @@
+@use 'mixins'
+@use 'variables'
+
+* 
+    margin: 0px
+    padding: 0px
+    box-sizing: border-box
+
+.header-container 
+    width: 100vw
+    background-color: variables.$header-color
+    margin: 0 auto
+
+.header 
+    @include mixins.div-positioning (relative, flex, null, null, center, space-between, null, null, null, null)
+    @include mixins.div-spacing (84px, null, 1200px, 0 auto, null, 30px, null, null, null)
+
+.header-logo, .header-menu, .header-buttons 
+    justify-content: space-between 
+    align-items: center
+    @include mixins.flexed-display ($gap:30px)
+
+.header-menu 
+    padding-left: 250px
+    h4 
+        @include mixins.text($weight: 500, $line-height: 24px, $spacing: null)
+
+.header-menu h4:hover, .footer-blog-links h5:hover, #signup:hover
+    color: variables.$link-clicked-color
+    text-decoration: underline
+    cursor: pointer
+
+#signup 
+    @include mixins.text($weight: 700, $spacing: -0.01em, $color: variables.$inactive-color)
+
+.login 
+    @include mixins.div-spacing (null, null, null, null, 16px 20px, null, null, 1px solid variables.$inactive-color, 40px)
+    @include mixins.text($weight: 600, $spacing: -0.01em, $color: variables.$inactive-color)
+
+    &:hover:not(.login-clicked)
+        border: 1px solid variables.$active-bgcolor
+        color: variables.$active-bgcolor
+        background: variables.$header-color
+        cursor: pointer
+
+//makes the formatting "stick" after clicking and avoid the reformatting from hover
+.login:active, .login-clicked
+    background-color: variables.$active-bgcolor
+    @include mixins.div-spacing (null, null, null, null, 16px 20px, null, null, 1px solid variables.$active-bgcolor, 40px)
+    @include mixins.text($weight: 600, $spacing: -0.01em, $color: variables.$active-color)
+    cursor: pointer
+
+.burger-menu 
+    display: none
+
+.cards-container 
+    @include mixins.cards-container()
+
+.footer-container 
+    width: 100vw
+    background-color: variables.$card-text-color
+    margin: 0 auto
+
+.footer 
+    @include mixins.div-positioning (null, flex, null, null, null, space-between, null, null, null, null)
+    @include mixins.div-spacing (274px, 100vw, 1200px, 0 auto, 60px 40px, 30px, null, null, null)
+
+.footer-blog-links, .footer-courses, .footer-legal 
+    @include mixins.flexed-display($gap:20px)
+
+.privacy-terms 
+    @include mixins.flexed-display($gap:10px)
+
+.footer-blog 
+    @include mixins.flexed-display($direction: column, $gap:20px)
+
+.footer-titles 
+    @include mixins.text ($weight: 700, $line-height: 130%, $spacing: -0.02em)
+
+.footer-links 
+    @include mixins.text ($weight: 400, $size: 12px, $line-height: 130%, $spacing: -0.03em, $color: variables.$footer-link-color)
+
+.footer-social-links 
+    @include mixins.flexed-display($gap:15px)
+
+.footer-left, .footer-right, .footer-courses, .footer-social 
+    @include mixins.flexed-display($direction: column, $gap: null)
+
+.footer-left 
+    gap: 40px
+
+.footer-right 
+    gap: 80px
+
+.footer-social 
+    gap: 10px
+
+.follow-us 
+    @include mixins.text ($weight: 400, $size: 12px, $line-height: 130%, $spacing:-0.02em)
+
+.legal 
+    opacity: 0.4
+    @include mixins.text ($weight: 400, $size: 12px, $line-height: 130%, $spacing:-0.03em)
+
+.dates 
+    @include mixins.div-spacing(null, null, null, 0px, 4px 10px, null, null, solid variables.$inactive-color 1px, 30px)
+
+img.rounded-image-border 
+    border-radius: 5px
+
+.card-content 
+    padding-bottom: 10px
+
+.cards 
+    height: 350px
+    position: relative
+
+.card-image 
+    @include mixins.overlap-images()
+  
+.card-shadow 
+    @include mixins.overlap-images($position: absolute, $z-index: 3)
+
+.card-text 
+    @include mixins.text ($weight: 700, $size: 20px, $line-height: 130%, $color: variables.$card-text-color)
+
+//sets card shadow to visible when card is hovered
+.card-shadow
+    opacity: 0
+    transition: opacity 0.2s ease-in-out
+
+.cards:hover .card-shadow
+    opacity: 1
+
+.card-info
+    background-color: variables.$card-bgcolor
+    @include mixins.div-positioning (absolute, null, null, null, null, null, 4, null, 0, 50px)
+    @include mixins.div-spacing (auto, 320px, null, null, 10px 20px 0px 20px, null, null, null, null)
+
+//set div of check icon to be visible when card content is hovered, and the check icon itself to be visible when the div containing it is hovered
+.card-check
+    display: none
+    transition: opacity 0.2s ease-in-out
+    background-color: variables.$transparent-color
+    opacity: 0
+
+//toggling visibility of "check" mark to simulate "read" post
+.read-clicked-visible
+    display: block
+    opacity: 1
+
+.card-info:hover .card-check
+    display: block
+    transition: opacity 0.2s ease-out
+
+.card-check:hover
+    opacity: 1
+
+.card-elements 
+    @include mixins.flexed-display ($direction: column)
+
+.card-bottom 
+    display: flex
+    justify-content: space-between
+    margin: 10px 0px
+
+    h5 
+        @include mixins.text ($weight: 400, $size: 12px, $line-height: 130%, $spacing:null, $color: variables.$inactive-color)
+    
+.card-favorite 
+    display: flex
+    align-items: center
+
+//setting heart-icon div to relative to be parent of heart icons which will take on absolute positioning
+.heart-icon
+    position: relative
+    right: 25px
+    bottom: 13px
+
+//setting images to absolute positioning to achieve overlap
+.heart-default, .heart-hover, .heart-clicked
+    position: absolute
+
+//setting a "pseudo-coloring" effect by making other heart elements disappear when hovering over the heart-icon div
+.heart-hover, .heart-clicked
+    display: none //initial, default state
+
+.heart-icon:hover
+    .heart-default
+        display: none
+    .heart-hover
+        display: block //hovered state
+
+//toggles visibility for heart-default
+.heart-default-hidden
+    display: none
+
+//toggles visibility for heart-clicked
+.heart-clicked-visible
+    display: block //clicked state
+
+.card-border   
+    border-bottom: solid 0.5px variables.$inactive-color
+    width: 280px
+
+.cards-cross-icon
+    opacity: 0
+    transition: opacity 0.2s ease-in-out
+    @include mixins.overlap-images ($position: absolute, $z-index: 5, $top: 20px, $left: null, $right: 20px)
+
+.cards-cross-icon:hover
+    opacity: 1
+    transition: opacity 0.2s ease-in-out
+
+@media only screen and (max-width: 768px) 
+    .header-menu, .header-buttons 
+        display: none
+
+    //implemented the burger menu starting at 768px
+    .burger-menu 
+        display: block
+
+    .cards-container 
+        @include mixins.cards-container($rows: repeat(5, 300px))
+    
+    .footer 
+        height: 429px
+        @include mixins.flexed-display ($direction: column)
+        
+        .footer-blog-links, .footer-legal
+            @include mixins.flexed-display ($wrap: wrap, $gap: 20px)
+
+        .footer-right 
+            gap: 40px
+
+    .header 
+        align-items: flex-end
+
+        .header-logo img
+            padding: 0px 0px 20px 0px
+            height: 40px
+        
+        .burger-menu 
+            padding-bottom: 10px
+        
+//added query to make header menu centered and the grid set to 2 columns at 1024px
+@media only screen and (max-width: 1024px) 
+    .header-menu 
+        padding-left: 0
+    
+    .cards-container 
+        @include mixins.cards-container($columns: repeat(2, 1fr))
+
+//added a query at 950px to make blog links and legal section wrap when resizing
+@media only screen and (max-width: 950px) 
+    .footer-blog-links, .footer-legal 
+        @include mixins.flexed-display($wrap: wrap, $gap: 20px)
+
+//started query with one grid at 680px until 320px for fluidity 
+@media only screen and (max-width: 680px) 
+    .header-buttons 
+        display: none
+    
+    .cards-container 
+        @include mixins.cards-container($columns: 1fr, $rows: repeat(9, 257px), $row-gap: 20px)
+    
+    .cards 
+        height: 257px
+    
+    .card-info, .card-content, .card-elements, .card-bottom 
+        width: 290px
+
+    .card-info 
+        padding: 0
+        bottom: 30px
+    
+    .card-content 
+        padding: 10px 20px
+
+    .card-bottom 
+        padding: 0px 20px
+    
+    .card-border 
+        width: 250px
+        margin: 0px 20px
+    
+    .card-image img, .card-shadow img 
+        height: 180px
+        width: 290px
+    
+    .card-text 
+        @include mixins.text ($weight: 700, $size: 15px, $line-height: 130%, $spacing: -0.02em, $text-align: null, $color: variables.$card-text-color)
+    
+    .check-icon
+        padding: 10px 0px 0px 10px
+    
+    .footer 
+        justify-content: left
+        background-color: variables.$card-text-color
+        @include mixins.div-spacing (429px, 100vw, 1200px, 0 auto, 40px 15px, 30px, 40px, null, null)
+        @include mixins.flexed-display ($direction: column, $gap: 40px)
+
+        .footer-blog-links 
+            @include mixins.flexed-display ($wrap: wrap, $gap: 10px)
+        
+
+        .footer-legal, .footer-courses 
+            @include mixins.flexed-display ($direction: column, $wrap: wrap, $gap: 10px)
+        
+
+        .footer-social-links, .footer-blog 
+            gap: 10px
+        
+
+        .footer-left 
+            gap: 30px
+        
+
+        .footer-right 
+            gap: 40px
+        
+    

@@ -1,0 +1,22 @@
+:root {
+    font-family: courier;
+}
+
+input {
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type=submit]{
+    background-color: blue;
+    color: white;
+}
+
+input[type=reset]{
+    background-color: gray;
+    color: white;
+}
+
+#message {
+    display: none;
+}

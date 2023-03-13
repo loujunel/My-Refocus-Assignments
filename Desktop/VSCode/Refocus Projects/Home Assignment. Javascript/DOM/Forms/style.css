@@ -1,0 +1,23 @@
+form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.form-control > div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.error {
+    display: flex;
+    flex-direction: row-reverse;
+    color: red;
+}

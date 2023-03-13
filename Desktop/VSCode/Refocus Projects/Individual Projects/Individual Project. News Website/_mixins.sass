@@ -1,0 +1,62 @@
+@use 'variables'
+
+//general text formatting
+@mixin text ($family: variables.$main-font, $style: normal, $weight: 600, $size: 16px, $line-height: 100%, $spacing: -0.01em, $text-align: null, $color: variables.$active-color)
+    font-family: $family
+    font-style: $style
+    font-weight: $weight
+    font-size: $size
+    line-height: $line-height
+    letter-spacing: $spacing
+    text-align: $text-align
+    color: $color
+
+//mixin for positioning generally larger divs
+@mixin div-positioning ($position: relative, $display: column, $flex-direction: row, $wrap: wrap, $align-items: center, $justify-content: space-between, $z-index: 0, $top: 0, $left: 0, $bottom: 0) 
+    position: $position
+    display: $display
+    flex-direction: $flex-direction
+    flex-wrap: $wrap
+    align-items: $align-items
+    justify-content: $justify-content
+    z-index: $z-index
+    top: $top
+    left: $left
+    bottom: $bottom
+
+//mixin for spacing generally larger divs
+@mixin div-spacing ($height: auto, $width: auto, $max-width: 1200px, $margin: 0, $padding: 0, $inline: 0px, $gap: 0px, $border: none, $border-radius: 0px) 
+    height: $height
+    width: $width
+    max-width: $max-width
+    margin: $margin
+    padding: $padding
+    padding-inline: $inline
+    gap: $gap
+    border: $border
+    border-radius: $border-radius
+
+//mixin for formatting cards' grid containers
+@mixin cards-container ($display: grid, $columns: repeat(3, 1fr), $rows: repeat(3, 300px), $margin: 60px auto, $max-width: 1200px, $justify: center, $row-gap: 40px)
+    display: $display
+    grid-template-columns: $columns
+    grid-template-rows: $rows
+    margin: $margin
+    max-width: $max-width
+    justify-items: $justify
+    grid-row-gap: $row-gap
+
+//mixin for smaller divs with flexed displays
+@mixin flexed-display ($display: flex, $direction: row, $wrap: nowrap, $gap: 0px) 
+    display: $display
+    flex-direction: $direction
+    flex-wrap: $wrap
+    gap: $gap
+
+//mixin for overlapping elements, i.e., image, shadow, buttons etc.
+@mixin overlap-images ($position: relative, $z-index: 1, $top: 0, $left: 0, $right: null) 
+    position: $position
+    z-index: $z-index
+    top: $top
+    left: $left
+    right: $right

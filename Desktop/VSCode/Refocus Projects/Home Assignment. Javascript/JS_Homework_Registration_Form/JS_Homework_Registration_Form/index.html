@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccine Information Registration System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/d137e1b06c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form name="registration" id="registration-form">
+        <div class ="master-area">
+            <div class="header">
+                <div>
+                    <h1 id="header-text"><i class="fa-sharp fa-solid fa-virus-covid"></i> VACCINE INFORMATION TRACKING SYSTEM</h1>
+                </div>
+                <div class="links">
+                    <h4><i class="fa-sharp fa-solid fa-house-user"></i> Home</h4>
+                    <h4><i class="fa-sharp fa-solid fa-file"></i> Issuances</h4>
+                    <h4><i class="fa-sharp fa-solid fa-handshake"></i> Programs</h2>
+                    <h4><i class="fa-sharp fa-solid fa-address-card"></i> About us</h4>
+                    <h4><i class="fa-sharp fa-solid fa-phone"></i> Contact us</h4>
+                </div>
+            </div>
+            <div class="horizontal">
+                <div class ="left-pane">
+                    <h1><i class="fa-sharp fa-solid fa-link"></i> Useful Links</h1>
+                    <h3>For more information regarding the Coronavirus disease (COVID-19), you may visit the following sites:</h3>
+                    <ul>
+                        <li><a href="https://doh.gov.ph/" target="_blank">Department of Health</a></li>
+                        <li><a href="https://iatf.doh.gov.ph/" target="blank">IATF</a></li>
+                        <li><a href="https://www.who.int/" target="_blank">World Health Organization</a></li>
+                    </ul>
+                </div>
+                <div class ="form-area">
+                    <h1>Vaccine Information Registration Form</h1>
+                    <div class="name-container">
+                        <div class="form-control">
+                            <div>
+                                <label>First Name</label>
+                                <input type="text" name="firstname" placeholder="First name" onchange ="resetSummary()" oninvalid="this.setCustomValidity('Please enter your first name', setInvalid(this))" required/>
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <div>
+                                <label>Middle Name</label>
+                                <input type="text" name="middlename" placeholder="'N/A' if not applicable" onchange ="resetSummary()" oninvalid="this.setCustomValidity('Please enter your middle name or N/A if not applicable', setInvalid(this))" required/>
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <div>
+                                <label>Last Name</label>
+                                <input type="text" name="lastname" placeholder="Last name" onchange ="resetSummary()" oninvalid="this.setCustomValidity('Please enter your last name', setInvalid(this))" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-container">
+                        <div class="form-control">
+                            <div>
+                                <label>Birthdate</label>
+                                <input type="date" name="birthdate" id="birthdate" onchange ="resetSummary()" oninvalid ="setInvalid(this)" required/>
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <div>
+                                <label>Email</label>
+                                <input type="email" name="email" id="email" placeholder="email@example.com" oninvalid="this.setCustomValidity('Please enter a valid email address', setInvalid(this))" onchange="setValid(this);resetSummary()" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <div>
+                            <label>Region</label>
+                            <select name="region" id="region" oninvalid="this.setCustomValidity('Please select region from the list', setInvalid(this))" onchange="setValid(this); resetSummary()" required>
+                                <option value="">-Select Region-</option>
+                                <option value="Region I - Ilocos Region">Region I - Ilocos Region</option>
+                                <option value="Region II - Cagayan Valley">Region II - Cagayan Valley</option>
+                                <option value="Region III - Central Luzon">Region III - Central Luzon</option>
+                                <option value="Region IV-A - CALABARZON">Region IV-A - CALABARZON</option>
+                                <option value="Region IV-B - MIMAROPA">Region IV-B - MIMAROPA</option>
+                                <option value="Region V - Bicol Region">Region V - Bicol Region</option>
+                                <option value="Region VI - Western Visayas">Region VI - Western Visayas</option>
+                                <option value="Region VII - Central Visayas">Region VII - Central Visayas</option>
+                                <option value="Region VIII - Eastern Visayas">Region VIII - Eastern Visayas</option>
+                                <option value="Region IX - Zamboanga Peninsula">Region IX - Zamboanga Peninsula</option>
+                                <option value="Region X - Northern Mindanao">Region X - Northern Mindanao</option>
+                                <option value="Region XI - Davao Region">Region XI - Davao Region</option>
+                                <option value="Region XII - SOCCSKSARGEN">Region XII - SOCCSKSARGEN</option>
+                                <option value="Region XIII - Caraga">Region XIII - CARAGA</option>
+                                <option value="BARMM - Bangsamoro Autonomous Region in Muslim Mindanao">BARMM - Bangsamoro Autonomous Region in Muslim Mindanao</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="address-container">
+                        <div class="form-control">
+                            <div>
+                                <label>Province</label>
+                                <input type="text" name="province" placeholder="Province" oninvalid="this.setCustomValidity('Province is required', setInvalid(this))" onchange ="resetSummary()" required/>
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <div>
+                                <label>Barangay</label>
+                                <input type="text" name="barangay" placeholder="Barangay" oninvalid="this.setCustomValidity('Barangay is required', setInvalid(this))" onchange ="resetSummary()" required/>
+                            </div>
+                        </div>
+                        <div class="form-control">
+                            <div>
+                                <label>Street</label>
+                                <textarea id="street" name="street" rows="4" resize="none" placeholder="Street/building/apartment/purok" oninvalid="this.setCustomValidity('Street address is required', setInvalid(this))" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vaccine-details">
+                        <div class="gender-container">
+                            <div class="form-control">
+                                <i class="fa-sharp fa-solid fa-person"></i> <i class="fa-sharp fa-solid fa-person-dress"></i> Gender
+                                <div>
+                                    <label>
+                                        <input type="radio" name="gender" value="Male" oninvalid="this.setCustomValidity('Please select gender', setInvalid(this))" onchange="setValid(this);resetSummary()" required/> Male
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="gender" value="Female"/> Female
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="gender" value="Other"/> Other
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="vaccine-one-container">
+                            <div class="form-control">
+                                <div>
+                                    <label><i class="fa-sharp fa-solid fa-syringe"></i> Vaccination Brand (Dose 1)</label>
+                                    <select name="dose1" id="dose1" oninvalid="this.setCustomValidity('Select brand of vaccine for Dose 1', setInvalid(this))" onchange="setValid(this);resetSummary()" required>
+                                        <option value="">-Select Vaccine Brand-</option>
+                                        <option value="Pfizer BioNTech">Pfizer BioNTech</option>
+                                        <option value="AstraZeneca">AstraZeneca</option>
+                                        <option value="Coronavac">Coronavac</option>
+                                        <option value="Sputnik V">Sputnik V</option>
+                                        <option value="Janssen">Janssen</option>
+                                        <option value="Covaxin">Covaxin</option>
+                                        <option value="Moderna">Moderna</option>
+                                        <option value="Sinopharm">Sinopharm</option>
+                                        <option value="Covovax">Covovax</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-control">
+                                <div>
+                                    <label>Date of Vaccination (Dose 1)</label>
+                                    <input type="date" name="datedose1" id="datedose1" oninvalid="setInvalid(this)" onchange="setValid(this);resetSummary()" required/>
+                                </div>
+                            </div>
+                            <div class="form-control">
+                                <div>
+                                    <label>Vaccination Site (Dose 1)</label>
+                                    <input type="text" name="vaxsite1" oninvalid="this.setCustomValidity('Indicate site where you have received your 1st dose', setInvalid(this))" onchange ="resetSummary()"  required/>
+                                </div>
+                            </div>
+                        <div class="form-control">
+                                <div>
+                                    Have you received your second vaccination?
+                                    <label>
+                                        <input type="radio" name="secondvax" id="secondvax" value="YES" onchange ="toggleSecond(); setValid(this); resetSummary()" oninvalid="this.setCustomValidity('Please select a response', setInvalid(this))" required/> Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="secondvax" id="secondvax" value="NO" onchange ="toggleSecond(); setValid(this); resetSummary"/> No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vaccine-two-container" id="vaccine-two-container">
+                            <div class="form-control">
+                                <div>
+                                    <label id="lbl-dose2"> <i class="fa-sharp fa-solid fa-syringe"></i> Vaccination Brand (Dose 2)</label>
+                                    <select name="dose2" id="dose2" oninvalid="this.setCustomValidity('Select brand of vaccine for Dose 2', setInvalid(this))" onchange="setValid(this); resetSummary()">
+                                        <option value="">-Select Vaccine Brand-</option>
+                                        <option value="Pfizer BioNTech">Pfizer BioNTech</option>
+                                        <option value="AstraZeneca">AstraZeneca</option>
+                                        <option value="Coronavac">Coronavac</option>
+                                        <option value="Sputnik V">Sputnik V</option>
+                                        <option value="Janssen">Janssen</option>
+                                        <option value="Covaxin">Covaxin</option>
+                                        <option value="Moderna">Moderna</option>
+                                        <option value="Sinopharm">Sinopharm</option>
+                                        <option value="Covovax">Covovax</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-control">
+                                <div>
+                                    <label id="lbl-datedose2">Date of Vaccination (Dose 2)</label>
+                                    <input type="date" name="datedose2" id="datedose2" oninvalid="setInvalid(this)" onchange="setValid(this); resetSummary()"/>
+                                </div>
+                            </div>
+                            <div class="form-control">
+                                <div>
+                                    <label id="lbl-sitedose2">Vaccination Site (Dose 2)</label>
+                                    <input type="text" name="vaxsite2" id="vaxsite2" oninvalid="this.setCustomValidity('Indicate site where you have received your 2nd dose', setInvalid(this))" onchange="setValid(this); resetSummary()"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit-reset-container">
+                        <div class="form-control">
+                            <button type="submit" name="submitBtn">Submit</button>
+                            <button type="reset" name="resetBtn" onclick="resetSummary()">Reset</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-area">
+                    <h1>Vaccine details summary</h1>
+                    <div class="vaccine-details" id="vaccine-details"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+<script>
+
+    function preventFormSubmit() {
+        var forms = document.querySelectorAll('form');
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].addEventListener('submit', function(event) {
+            event.preventDefault();
+            });
+        }
+        }
+
+    window.addEventListener('load', preventFormSubmit);
+
+    const form = document.querySelector("form");
+    const fields = form.querySelectorAll("input:not(#email), textarea");
+
+    fields.forEach(field => {
+    field.addEventListener("input", function() {
+        this.value = this.value.toUpperCase();
+        setValid(this);
+    });
+    field.addEventListener("change", function() {
+        this.value = this.value.toUpperCase();
+        setValid(this)
+    });
+    });
+
+
+   birthdate.addEventListener("change", function(){
+        var inputBirth = document.getElementById('birthdate').value;
+        var now = new Date();
+        var d = new Date(inputBirth);
+        var curryear = now.getFullYear();
+        var birthyear = d.getFullYear();
+
+        if (inputBirth==""){
+            birthdate.setCustomValidity('Please enter your date of birth');
+            setInvalid(this);
+        }    
+        else if (curryear <= birthyear){
+            birthdate.setCustomValidity('Date of birth cannot be today or in the future');
+            setInvalid(this);
+        }
+        else {
+            setValid(this);
+        }
+    });
+
+    function setValid(field){
+        field.setCustomValidity('');
+        field.style.borderColor = "black";
+    };
+
+    function setInvalid(field){
+        field.style.borderColor = "red";
+    };
+
+    function resetSummary(){
+        document.getElementById('vaccine-details').innerText="";
+    }
+
+    datedose1.addEventListener("change", function(){
+        var dose1 = document.getElementById('datedose1').value;
+        var now = new Date();
+        var firstdose = new Date(dose1);
+        var curryear = now.getFullYear();
+        var dose1year = firstdose.getFullYear();
+
+
+        if (dose1==""){
+            datedose1.setCustomValidity('Indicate date of 1st dose');
+            setInvalid(this);
+        }    
+        else if (firstdose > now){
+            datedose1.setCustomValidity('Date of first vaccination cannot be in the future.');
+            setInvalid(this);
+        }
+        else if (dose1year <= 2018){
+            datedose1.setCustomValidity('Date of first vaccination cannot be earlier than 2019.');
+            setInvalid(this);
+        }
+        else {
+            setValid(this);
+        }
+    });
+
+    datedose2.addEventListener("change", function(){
+        var dose1 = document.getElementById('datedose1').value;
+        var dose2 = document.getElementById('datedose2').value;
+        var firstdose = new Date(dose1);
+        var seconddose = new Date(dose2);
+        var now = new Date();
+
+        if (dose2==""){
+            datedose2.setCustomValidity('Indicate date of 2nd dose');
+            setInvalid(this);
+        }    
+        else if (seconddose <= firstdose){
+            datedose2.setCustomValidity('Date of second vaccination cannot be earlier than or the same as first vaccination date');
+            setInvalid(this);
+        }
+        else if (seconddose > now){
+            datedose2.setCustomValidity('Date of second vaccination cannot be in the future');
+            setInvalid(this);
+        }
+        else {
+            setValid(this);
+        }
+    });
+
+    const toggleSecond = () => {
+        const secondvax = document.querySelector('input[name="secondvax"]:checked').value;
+
+        // I cannot make this commented block to work properly so I coded it the long way
+
+        // const container = document.getElementById('vaccine-two-container');
+
+        // for (const element of container.children) {
+        //     if (secondvax === 'YES') {
+        //         element.value = '';
+        //         element.required = true; 
+        //         element.style.visibility = 'visible';
+        //     } else {
+        //         element.value = '';
+        //         element.required = false;
+        //         element.style.visibility = 'hidden';
+        //     }
+        // }
+        
+        if (secondvax === 'YES'){
+            document.getElementById('lbl-dose2').style.visibility ='visible';
+            document.getElementById('lbl-datedose2').style.visibility ='visible';
+            document.getElementById('lbl-sitedose2').style.visibility ='visible';
+            document.getElementById('dose2').value= '';
+            document.getElementById('dose2').required = true;
+            document.getElementById('dose2').style.visibility = 'visible';
+            document.getElementById('datedose2').value = '';
+            document.getElementById('datedose2').required = true;
+            document.getElementById('datedose2').style.visibility = 'visible';
+            document.getElementById('vaxsite2').value = '';
+            document.getElementById('vaxsite2').required = true;
+            document.getElementById('vaxsite2').style.visibility = 'visible';
+        }
+        else {
+            document.getElementById('lbl-dose2').style.visibility ='hidden';
+            document.getElementById('lbl-datedose2').style.visibility ='hidden';
+            document.getElementById('lbl-sitedose2').style.visibility ='hidden';
+            document.getElementById('dose2').value= '';
+            document.getElementById('dose2').required = true;
+            document.getElementById('dose2').style.visibility = 'hidden';
+            document.getElementById('datedose2').value = '';
+            document.getElementById('datedose2').required = true;
+            document.getElementById('datedose2').style.visibility = 'hidden';
+            document.getElementById('vaxsite2').value = '';
+            document.getElementById('vaxsite2').required = true;
+            document.getElementById('vaxsite2').style.visibility = 'hidden';
+        }
+    };
+    
+    document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = {
+        'First name': form.firstname.value,
+        'Middle name': form.middlename.value,
+        'Last name': form.lastname.value,
+        'Birth date': form.birthdate.value,
+        'Email': form.email.value,
+        'Region': form.region.value,
+        'Province': form.province.value,
+        'Barangay': form.barangay.value,
+        'Street': form.street.value,
+        'Gender': form.gender.value,
+        'Brand of first dose': form.dose1.value,
+        'Date of first dose': form.datedose1.value,
+        'Vaccination site of first dose': form.vaxsite1.value,
+        'Received second dose': form.secondvax.value,
+        'Brand of second dose': form.dose2.value,
+        'Date of second dose': form.datedose2.value,
+        'Vaccination site of second dose': form.vaxsite2.value,
+    };
+
+    let output = '';
+    for (const key in formData) {
+        output += `${key}: ${formData[key]}\n`;
+    }
+
+    document.getElementById('vaccine-details').innerText = output;
+});
+
+</script>
+</html>

@@ -1,0 +1,5 @@
+@mixin box-shadow($width-box: 100px){
+    width: $width-box;
+    background-color: #b0bd68;
+    box-shadow: 20px 20px 17px 10px rgba(0,0,0,0.25)
+}
